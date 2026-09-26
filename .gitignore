@@ -1,0 +1,24 @@
+# Python / backend
+backend/venv/
+backend/.venv/
+**/__pycache__/
+*.pyc
+backend/*.db
+backend/app/data/*.joblib
+.pytest_cache/
+
+# Node / frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+npm-debug.log*
+
+# Env / secrets
+.env
+.env.local
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
