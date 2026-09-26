@@ -48,21 +48,39 @@ export default function RecommenderPage({ farmerMode }) {
   };
 
   if (commodities.length === 0 && !error) {
-    return <p>{t("loadingCommodities")}</p>;
+    return (
+      <div className="loading-state">
+        <div className="spinner" />
+        <span>{t("loadingCommodities")}</span>
+      </div>
+    );
   }
 
   return (
     <div>
       {error && <div className="error-banner">{error}</div>}
-      <RecommendationForm
-        commodities={commodities}
-        values={values}
-        onChange={setValues}
-        farmerMode={farmerMode}
-        loading={loading}
-        onSubmit={handleSubmit}
-      />
-      {result && <ResultsPanel result={result} formValues={values} />}
+      <div className="layout-grid">
+        <div className="form-col">
+          <RecommendationForm
+            commodities={commodities}
+            values={values}
+            onChange={setValues}
+            farmerMode={farmerMode}
+            loading={loading}
+            onSubmit={handleSubmit}
+          />
+        </div>
+        <div className="results-col">
+          {result ? (
+            <ResultsPanel result={result} formValues={values} />
+          ) : (
+            <div className="card empty-state">
+              <div className="empty-state-icon">📦</div>
+              <p>{t("emptyState")}</p>
+            </div>
+          )}
+        </div>
+      </div>
     </div>
   );
 }

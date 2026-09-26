@@ -43,6 +43,7 @@ const resources = {
       days: "days",
       language: "Language",
       loadingCommodities: "Loading commodities...",
+      emptyState: "Fill in the details and get a recommendation to see results here.",
     },
   },
   hi: {
@@ -86,6 +87,7 @@ const resources = {
       days: "दिन",
       language: "भाषा",
       loadingCommodities: "सूची लोड हो रही है...",
+      emptyState: "विवरण भरें और सुझाव पाने के लिए परिणाम यहां देखें।",
     },
   },
 };

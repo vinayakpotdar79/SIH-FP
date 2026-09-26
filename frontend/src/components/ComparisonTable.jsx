@@ -24,10 +24,23 @@ export default function ComparisonTable({ recommendations }) {
               <td><strong>{r.material.name}</strong></td>
               <td>{r.score}</td>
               <td>{r.predicted_shelf_life_days} {t("days")}</td>
-              <td>{"$".repeat(r.material.cost_tier)}</td>
-              <td>{r.material.eco_score}/10</td>
-              <td>{r.material.recyclable ? "✓" : "–"}</td>
-              <td>{r.material.biodegradable ? "✓" : "–"}</td>
+              <td>
+                <span className="cost-tier">
+                  {[1, 2, 3].map((tier) => (
+                    <span key={tier} className={tier <= r.material.cost_tier ? "filled" : ""}>$</span>
+                  ))}
+                </span>
+              </td>
+              <td>
+                <div className="eco-bar">
+                  <div className="eco-bar-track">
+                    <div className="eco-bar-fill" style={{ width: `${r.material.eco_score * 10}%` }} />
+                  </div>
+                  <span>{r.material.eco_score}/10</span>
+                </div>
+              </td>
+              <td><span className={`check-icon ${r.material.recyclable ? "yes" : "no"}`}>{r.material.recyclable ? "✓" : "–"}</span></td>
+              <td><span className={`check-icon ${r.material.biodegradable ? "yes" : "no"}`}>{r.material.biodegradable ? "✓" : "–"}</span></td>
             </tr>
           ))}
         </tbody>
