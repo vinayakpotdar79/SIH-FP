@@ -4,7 +4,7 @@ import { initReactI18next } from "react-i18next";
 const resources = {
   en: {
     translation: {
-      appTitle: "PackAI",
+      appTitle: "BitPack AI",
       appSubtitle: "Intelligent Packaging Recommendation System",
       technicalMode: "Technical mode",
       farmerMode: "Simple mode",
