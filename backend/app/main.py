@@ -1,4 +1,5 @@
 import json
+import os
 
 from fastapi import Depends, FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
@@ -12,14 +13,21 @@ from .seed_data import seed_if_empty
 
 app = FastAPI(title="Intelligent Food Packaging Recommendation API")
 
+FRONTEND_URL = os.getenv("FRONTEND_URL", "https://sih-fp.vercel.app")
+
+ALLOWED_ORIGINS = [
+    "http://localhost:5173",
+    FRONTEND_URL,
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=ALLOWED_ORIGINS,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-FRONTEND_PASSPORT_BASE_URL = "http://localhost:5173/passport"
+FRONTEND_PASSPORT_BASE_URL = os.getenv("FRONTEND_PASSPORT_BASE_URL", "http://localhost:5173/passport")
 
 
 @app.on_event("startup")

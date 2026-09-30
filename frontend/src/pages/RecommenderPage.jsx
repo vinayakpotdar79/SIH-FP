@@ -24,7 +24,7 @@ export default function RecommenderPage({ farmerMode }) {
         setCommodities(data);
         if (data.length > 0) setValues((v) => ({ ...v, commodityId: data[0].id }));
       })
-      .catch(() => setError("Could not load commodities. Is the backend running on http://localhost:8000?"));
+      .catch((e) => console.error("Could not load commodities", e));
   }, []);
 
   const handleSubmit = async () => {
